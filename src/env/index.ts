@@ -14,6 +14,7 @@ const envSchema = zod.object({
   NODE_ENV: zod
     .enum(['production', 'development', 'test'])
     .default('development'),
+  JWT_SECRET: zod.string(),
 })
 
 const _env = envSchema.safeParse(process.env)
