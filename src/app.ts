@@ -3,6 +3,7 @@ import fastifyJwt from '@fastify/jwt'
 import { UsersRoutes } from './routes/users'
 import { env } from './env'
 import { FastifyRequest } from 'fastify/types/request'
+import { DietsRoutes } from './routes/diets'
 
 export const app = fastify()
 
@@ -16,5 +17,9 @@ app.decorate(
 )
 
 app.register(UsersRoutes, {
-  prefix: 'users',
+  prefix: 'user',
+})
+
+app.register(DietsRoutes, {
+  prefix: 'diet',
 })

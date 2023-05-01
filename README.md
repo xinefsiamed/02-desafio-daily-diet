@@ -5,7 +5,7 @@
 - [ ] Deve ser possível editar uma refeição
 - [ ] Deve ser possível apagar uma refeição
 - [ ] Deve ser possível visualizar uma única refeição
-- [ ] Deve ser possível listar todas as refeições de um usuário
+- [x] Deve ser possível listar todas as refeições de um usuário
 
 #RN
 
