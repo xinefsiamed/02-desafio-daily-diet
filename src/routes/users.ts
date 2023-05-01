@@ -3,8 +3,6 @@ import bcrypt from 'bcrypt'
 import { z as zod } from 'zod'
 import { knex } from '../database'
 import { randomUUID } from 'crypto'
-import { sign } from 'jsonwebtoken'
-import { env } from '../env'
 
 export async function UsersRoutes(app: FastifyInstance) {
   app.post('/', async (request, reply) => {
@@ -54,10 +52,13 @@ export async function UsersRoutes(app: FastifyInstance) {
       return reply.send({ error: 'Email or password are incorrect' })
     }
 
-    const token = sign({}, env.JWT_SECRET, {
-      subject: user.id,
-      expiresIn: 1000 * 60 * 60 * 3, // 3 horas
-    })
+    const token = app.jwt.sign(
+      {},
+      {
+        sub: user.id,
+        expiresIn: 1000 * 60 * 60 * 3, // 3 Horas
+      },
+    )
 
     return { token }
   })
